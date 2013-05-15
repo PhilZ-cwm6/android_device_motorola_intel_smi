@@ -1,0 +1,4 @@
+add_lunch_combo full_intel_smi-eng
+add_lunch_combo full_intel_smi-userdebug
+add_lunch_combo cm_intel_smi-eng
+add_lunch_combo cm_intel_smi-userdebug
