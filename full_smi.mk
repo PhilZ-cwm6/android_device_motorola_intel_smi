@@ -28,7 +28,7 @@ PRODUCT_COPY_FILES += \
 	device/motorola/smi/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
 
 PRODUCT_COPY_FILES += \
-	device/motorola/smi/root/watchdogd:recovery/root/sbin/watchdogd \
+	device/motorola/smi/blobs/watchdogd:recovery/root/sbin/watchdogd \
 	#?device/motorola/smi/blobs/atmxt-r2.tdat:recovery/root/vendor/firmware/atmxt-r2.tdat \
 
 PRODUCT_COPY_FILES += \

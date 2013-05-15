@@ -29,7 +29,7 @@ TARGET_CPU_ABI := x86
 TARGET_CPU_SMP := true
 
 # Atom optimizations specified
-TARGET_GLOBAL_CFLAGS += -O2 -march=atom -msse -msse2 -msse3 -mssse3 -mpclmul \
+TARGET_GLOBAL_CFLAGS += -O3 -march=atom -msse -msse2 -msse3 -mssse3 -mpclmul \
                         -mcx16 -msahf -mmovbe -mstackrealign -ftree-vectorize \
                         -finline-functions -ffast-math -fexcess-precision=fast \
                         -fomit-frame-pointer -floop-parallelize-all \
