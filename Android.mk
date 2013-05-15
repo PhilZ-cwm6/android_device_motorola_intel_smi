@@ -1,3 +1,3 @@
-ifeq ($(TARGET_DEVICE),intel_smi)
+ifeq ($(TARGET_DEVICE),smi)
     include $(all-subdir-makefiles)
 endif
