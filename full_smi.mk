@@ -24,21 +24,26 @@
 DEVICE_PACKAGE_OVERLAYS := device/motorola/smi/overlay
 
 PRODUCT_COPY_FILES += \
-	device/motorola/smi/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
-	device/motorola/smi/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
+	device/motorola/smi/prebuilt/etc/*:system/etc/ \
+	device/motorola/smi/prebuilt/etc/*:system/etc/ \
 
 PRODUCT_COPY_FILES += \
+	device/motorola/smi/blobs/bin/*:system/bin/ \
+	device/motorola/smi/blobs/etc/*:system/etc/ \
+	device/motorola/smi/blobs/lib/*:system/lib/ \
+	device/motorola/smi/blobs/vendor/*:system/vendor/ \
+	device/motorola/smi/blobs/xbin/*:system/xbin/ \
+
+PRODUCT_COPY_FILES += \
+	device/motorola/smi/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
 	device/motorola/smi/blobs/watchdogd:recovery/root/sbin/watchdogd \
 	#?device/motorola/smi/blobs/atmxt-r2.tdat:recovery/root/vendor/firmware/atmxt-r2.tdat \
-
-PRODUCT_COPY_FILES += \
-    device/motorola/smi/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml
 
 # Inherit dalvik configuration and the rest of the platform
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 $(call inherit-product, build/target/product/full_base_telephony.mk)
 
-PRODUCT_NAME := smi
+PRODUCT_NAME := full_smi
 PRODUCT_DEVICE := smi
 PRODUCT_BRAND := Motorola
 PRODUCT_MANUFACTURER := Motorola

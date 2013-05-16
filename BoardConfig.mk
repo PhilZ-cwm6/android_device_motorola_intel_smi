@@ -29,7 +29,7 @@ TARGET_CPU_ABI := x86
 TARGET_CPU_SMP := true
 
 # Atom optimizations specified
-TARGET_GLOBAL_CFLAGS += -O3 -march=atom -msse -msse2 -msse3 -mssse3 -mpclmul \
+TARGET_GLOBAL_CFLAGS += -O2 -march=atom -msse -msse2 -msse3 -mssse3 -mpclmul \
                         -mcx16 -msahf -mmovbe -mstackrealign -ftree-vectorize \
                         -finline-functions -ffast-math -fexcess-precision=fast \
                         -fomit-frame-pointer -floop-parallelize-all \
@@ -48,6 +48,7 @@ TARGET_GLOBAL_CPPFLAGS += $(TARGET_GLOBAL_CFLAGS) -fno-exceptions -fno-rtti
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 TARGET_NO_RECOVERYIMAGE := true
+TARGET_NO_RECOVERY := true
 TARGET_NO_BOOTIMAGE := true
 
 BOARD_BOOTIMAGE_PARTITION_SIZE   :=  11534336 # 0x00b00000
@@ -85,3 +86,4 @@ BOARD_MALLOC_ALIGNMENT := 16
 # Custom EGL files
 USE_OPENGL_RENDERER := true
 BOARD_EGL_CFG := device/motorola/smi/prebuilt/egl.cfg
+
