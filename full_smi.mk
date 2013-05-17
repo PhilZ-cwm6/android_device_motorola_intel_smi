@@ -21,23 +21,36 @@
 # lines, full and smi, hence its name.
 #
 
-DEVICE_PACKAGE_OVERLAYS := device/motorola/smi/overlay
+DEVICE_PACKAGE_OVERLAYS := $(LOCAL_DIR)/overlay
+
+# gralloc & mesa lib
+PRODUCT_PACKAGES += \
+    libGLES_mesa    \
+    gralloc.$(TARGET_PRODUCT) \
+    camera.bigcore \
+
+# tinyalsa utils
+PRODUCT_PACKAGES += \
+	tinymix \
+	tinyplay \
+	tinycap \
+
 
 PRODUCT_COPY_FILES += \
-	device/motorola/smi/prebuilt/etc/*:system/etc/ \
-	device/motorola/smi/prebuilt/etc/*:system/etc/ \
+#	$(LOCAL_DIR)/prebuilt/etc/*:system/etc/ \
+#	$(LOCAL_DIR)/prebuilt/etc/*:system/etc/ \
 
 PRODUCT_COPY_FILES += \
-	device/motorola/smi/blobs/bin/*:system/bin/ \
-	device/motorola/smi/blobs/etc/*:system/etc/ \
-	device/motorola/smi/blobs/lib/*:system/lib/ \
-	device/motorola/smi/blobs/vendor/*:system/vendor/ \
-	device/motorola/smi/blobs/xbin/*:system/xbin/ \
+#	$(LOCAL_DIR)/blobs/bin/*:system/bin/ \
+#	$(LOCAL_DIR)/blobs/etc/*:system/etc/ \
+#	$(LOCAL_DIR)/blobs/lib/*:system/lib/ \
+#	$(LOCAL_DIR)/blobs/vendor/*:system/vendor/ \
+#	$(LOCAL_DIR)/blobs/xbin/*:system/xbin/ \
 
 PRODUCT_COPY_FILES += \
-	device/motorola/smi/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
-	device/motorola/smi/blobs/watchdogd:recovery/root/sbin/watchdogd \
-	#?device/motorola/smi/blobs/atmxt-r2.tdat:recovery/root/vendor/firmware/atmxt-r2.tdat \
+	$(LOCAL_DIR)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
+	$(LOCAL_DIR)/blobs/watchdogd:recovery/root/sbin/watchdogd \
+	#?$(LOCAL_DIR)/blobs/atmxt-r2.tdat:recovery/root/vendor/firmware/atmxt-r2.tdat \
 
 # Inherit dalvik configuration and the rest of the platform
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
