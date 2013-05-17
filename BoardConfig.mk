@@ -20,6 +20,8 @@
 # definition file).
 #
 
+LOCAL_DIR = device/motorola/smi
+
 TARGET_BOOTLOADER_BOARD_NAME := smi
 TARGET_BOARD_PLATFORM := atom
 TARGET_ARCH := x86
