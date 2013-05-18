@@ -48,8 +48,8 @@ PRODUCT_COPY_FILES += \
 #	$(LOCAL_DIR)/blobs/xbin/*:system/xbin/ \
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_DIR)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
-	$(LOCAL_DIR)/blobs/watchdogd:recovery/root/sbin/watchdogd \
+	#$(LOCAL_DIR)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
+	#$(LOCAL_DIR)/blobs/watchdogd:recovery/root/sbin/watchdogd \
 	#?$(LOCAL_DIR)/blobs/atmxt-r2.tdat:recovery/root/vendor/firmware/atmxt-r2.tdat \
 
 # Inherit dalvik configuration and the rest of the platform
