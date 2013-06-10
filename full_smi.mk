@@ -25,9 +25,9 @@ DEVICE_PACKAGE_OVERLAYS := $(LOCAL_DIR)/overlay
 
 # gralloc & mesa lib
 PRODUCT_PACKAGES += \
-    libGLES_mesa    \
-    gralloc.$(TARGET_PRODUCT) \
-    camera.bigcore \
+	libGLES_mesa \
+	gralloc.$(TARGET_PRODUCT) \
+	camera.bigcore \
 
 # tinyalsa utils
 PRODUCT_PACKAGES += \
@@ -58,7 +58,11 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_DIR)/blobs/bin/disable_houdini:system/bin/disable_houdini \
 	$(LOCAL_DIR)/blobs/bin/enable_houdini:system/bin/enable_houdini \
 	$(LOCAL_DIR)/blobs/bin/kexec:system/bin/kexec \
+	$(LOCAL_DIR)/blobs/lib/libskia.so:system/lib/libskia.so \
 	$(LOCAL_DIR)/blobs/bin/fmradioserver:system/bin/fmradioserver \
+	$(LOCAL_DIR)/blobs/lib/libFMRadio.so:system/lib/libFMRadio.so \
+	$(LOCAL_DIR)/blobs/lib/libfmradio_jni.so:system/lib/libfmradio_jni.so \
+	$(LOCAL_DIR)/blobs/lib/libfmradioplayer.so:system/lib/libfmradioplayer.so \
 
 PRODUCT_COPY_FILES += \
 	#$(LOCAL_DIR)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
