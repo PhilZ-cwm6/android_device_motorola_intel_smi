@@ -31,11 +31,26 @@ TARGET_CPU_ABI := x86
 TARGET_CPU_SMP := true
 
 # Atom optimizations specified
-TARGET_GLOBAL_CFLAGS += -O2 -march=atom -msse -msse2 -msse3 -mssse3 -mpclmul \
-                        -mcx16 -msahf -mmovbe -mstackrealign -ftree-vectorize \
-                        -finline-functions -ffast-math -fexcess-precision=fast \
-                        -fomit-frame-pointer -floop-parallelize-all \
-                        -ftree-parallelize-loops=2
+TARGET_GLOBAL_CFLAGS += -O3 \
+                        -pipe \
+                        -march=atom \
+                        -msse \
+                        -msse3 \
+                        -mssse3 \
+                        -mpclmul \
+                        -mcx16 \
+                        -msahf \
+                        -mmovbe \
+                        -ffast-math \
+                        -fomit-frame-pointer \
+                        -floop-interchange \
+                        -floop-strip-mine \
+                        -floop-block \
+                        -floop-parallelize-all \
+                        -ftree-parallelize-loops=2 \
+                        -ftree-loop-if-convert \
+                        -funroll-loops \
+                        -fvariable-expansion-in-unroller \
 
 # The following are very specific to out z2480 Atom
 TARGET_GLOBAL_CFLAGS += --param l1-cache-line-size=64 \
