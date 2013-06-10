@@ -20,7 +20,7 @@
 # definition file).
 #
 
-LOCAL_DIR = device/motorola/smi
+LOCAL_PATH := device/motorola/smi
 
 TARGET_BOOTLOADER_BOARD_NAME := smi
 TARGET_BOARD_PLATFORM := atom
@@ -76,20 +76,20 @@ BOARD_FLASH_BLOCK_SIZE := 2048
 BOARD_KERNEL_BASE := 0x1200000
 BOARD_KERNEL_BASE := 0x000400
 BOARD_KERNEL_PAGESIZE := 4096
-TARGET_PREBUILT_KERNEL := $(LOCAL_DIR)/prebuilt/kernel
-TARGET_KERNEL_SOURCE := $(LOCAL_DIR)/kernel/linux-3.0
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
+TARGET_KERNEL_SOURCE := $(LOCAL_PATH)/kernel/linux-3.0
 TARGET_KERNEL_CONFIG := i386_mfld_oxavelar_defconfig
-#BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_DIR)/tools/mkbootimg
+#BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/tools/mkbootimg
 BOARD_KERNEL_CMDLINE := init=/init pci=noearly console=logk0 vmalloc=272M \
 earlyprintk=nologger hsu_dma=7 kmemleak=off androidboot.bootmedia=sdcard \
 androidboot.hardware=sc1 emmc_ipanic.ipanic_part_number=6 loglevel=4
 
 # Recovery configuration
 #TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
-#BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../$(LOCAL_DIR)/recovery/recovery_keys.c
+#BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../$(LOCAL_PATH)/recovery/recovery_keys.c
 #BOARD_HAS_NO_SELECT_BUTTON := true
 #BOARD_TOUCH_RECOVERY := true
-#DEVICE_BASE_RECOVERY_IMAGE := $(LOCAL_DIR)/prebuilt/recovery.img
+#DEVICE_BASE_RECOVERY_IMAGE := $(LOCAL_PATH)/prebuilt/recovery.img
 
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -102,5 +102,5 @@ BOARD_MALLOC_ALIGNMENT := 16
 
 # Custom EGL files
 USE_OPENGL_RENDERER := true
-BOARD_EGL_CFG := $(LOCAL_DIR)/prebuilt/egl.cfg
+BOARD_EGL_CFG := $(LOCAL_PATH)/prebuilt/egl.cfg
 
