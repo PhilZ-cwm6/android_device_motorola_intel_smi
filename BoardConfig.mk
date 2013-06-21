@@ -26,16 +26,19 @@ TARGET_BOOTLOADER_BOARD_NAME := smi
 TARGET_BOARD_PLATFORM := atom
 TARGET_ARCH := x86
 TARGET_ARCH_VARIANT := x86-atom
+TARGET_ARCH_VARIANT := x86
 TARGET_ARCH_VARIANT_FPU := sse
 TARGET_CPU_ABI := x86
 TARGET_CPU_SMP := true
 
 # Atom optimizations specified
-TARGET_GLOBAL_CFLAGS += -O3 \
+TARGET_GLOBAL_CFLAGS += \
+                        -mno-android \
+                        -O2 \
                         -pipe \
+                        -mx32 \
                         -march=atom \
-                        -msse \
-                        -msse3 \
+                        -mfpmath=sse \
                         -mssse3 \
                         -mpclmul \
                         -mcx16 \
@@ -43,23 +46,32 @@ TARGET_GLOBAL_CFLAGS += -O3 \
                         -mmovbe \
                         -ffast-math \
                         -fomit-frame-pointer \
+                        -floop-block \
                         -floop-interchange \
                         -floop-strip-mine \
-                        -floop-block \
                         -floop-parallelize-all \
+                        -ftree-vectorize \
                         -ftree-parallelize-loops=2 \
                         -ftree-loop-if-convert \
+                        -ftree-loop-if-convert-stores \
+                        -fpeel-loops \
                         -funroll-loops \
                         -fvariable-expansion-in-unroller \
+                        --param l1-cache-line-size=64 \
+                        --param l1-cache-size=24 \
+                        --param l2-cache-size=512 \
 
 # The following are very specific to out z2480 Atom
-TARGET_GLOBAL_CFLAGS += --param l1-cache-line-size=64 \
+TARGET_GLOBAL_CFLAGS += \
+                        --param l1-cache-line-size=64 \
                         --param l1-cache-size=24 \
                         --param l2-cache-size=512 \
 
 TARGET_GLOBAL_CFLAGS += -DUSE_SSSE3 -DUSE_SSE2
 
 TARGET_GLOBAL_CPPFLAGS += $(TARGET_GLOBAL_CFLAGS) -fno-exceptions -fno-rtti
+
+LDFLAGS += -Wl,-O1
 
 # Make settings
 TARGET_NO_BOOTLOADER := true

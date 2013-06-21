@@ -21,6 +21,8 @@
 # lines, full and smi, hence its name.
 #
 
+LOCAL_PATH := device/motorola/smi
+
 DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay
 
 # gralloc & mesa lib
