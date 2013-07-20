@@ -27,36 +27,43 @@ TARGET_BOARD_PLATFORM := atom
 TARGET_ARCH := x86
 TARGET_ARCH_VARIANT := x86-atom
 TARGET_ARCH_VARIANT := x86
-TARGET_ARCH_VARIANT_FPU := sse
+TARGET_ARCH_VARIANT_FPU := 387
 TARGET_CPU_ABI := x86
 TARGET_CPU_SMP := true
 
 # Atom optimizations specified
 TARGET_GLOBAL_CFLAGS += \
-                        -mno-android \
                         -O2 \
                         -pipe \
-                        -mx32 \
+                        -flto \
                         -march=atom \
-                        -mfpmath=sse \
+                        -mmmx \
+                        -msse \
+                        -msse2 \
+                        -msse3 \
                         -mssse3 \
                         -mpclmul \
                         -mcx16 \
                         -msahf \
                         -mmovbe \
-                        -ffast-math \
+                        -ftree-vectorize \
                         -fomit-frame-pointer \
+                        -finline-functions \
+                        -fpredictive-commoning \
+                        -fgcse-after-reload \
+                        -fforce-addr \
+                        -ffast-math \
+                        -fsingle-precision-constant \
                         -floop-block \
                         -floop-interchange \
                         -floop-strip-mine \
                         -floop-parallelize-all \
-                        -ftree-vectorize \
                         -ftree-parallelize-loops=2 \
                         -ftree-loop-if-convert \
                         -ftree-loop-if-convert-stores \
-                        -fpeel-loops \
-                        -funroll-loops \
-                        -fvariable-expansion-in-unroller \
+                        -ftree-loop-distribution \
+                        -foptimize-register-move \
+                        -fgraphite-identity \
                         --param l1-cache-line-size=64 \
                         --param l1-cache-size=24 \
                         --param l2-cache-size=512 \
@@ -67,11 +74,11 @@ TARGET_GLOBAL_CFLAGS += \
                         --param l1-cache-size=24 \
                         --param l2-cache-size=512 \
 
-TARGET_GLOBAL_CFLAGS += -DUSE_SSSE3 -DUSE_SSE2
+#TARGET_GLOBAL_CFLAGS += -DUSE_SSSE3 -DUSE_SSE2
 
-TARGET_GLOBAL_CPPFLAGS += $(TARGET_GLOBAL_CFLAGS) -fno-exceptions -fno-rtti
+#TARGET_GLOBAL_CPPFLAGS += $(TARGET_GLOBAL_CFLAGS) -fno-exceptions -fno-rtti
 
-LDFLAGS += -Wl,-O1
+#LDFLAGS += -Wl,-O1
 
 # Make settings
 TARGET_NO_BOOTLOADER := true
@@ -94,7 +101,7 @@ TARGET_KERNEL_CONFIG := i386_mfld_oxavelar_defconfig
 #BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/tools/mkbootimg
 BOARD_KERNEL_CMDLINE := init=/init pci=noearly console=logk0 vmalloc=272M \
 earlyprintk=nologger hsu_dma=7 kmemleak=off androidboot.bootmedia=sdcard \
-androidboot.hardware=sc1 emmc_ipanic.ipanic_part_number=6 loglevel=4
+androidboot.hardware=sc1 emmc_ipanic.ipanic_part_number=6
 
 # Recovery configuration
 #TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"

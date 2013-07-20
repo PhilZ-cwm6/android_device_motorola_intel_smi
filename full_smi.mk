@@ -28,7 +28,6 @@ DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay
 # gralloc & mesa lib
 PRODUCT_PACKAGES += \
 	gralloc.$(TARGET_PRODUCT) \
-	libskia \
 
 # Prebuilt configuration files
 PRODUCT_COPY_FILES += \
@@ -45,19 +44,25 @@ PRODUCT_COPY_FILES += \
 
 # Files needed for compilation time
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/blobs/bin/houdini:system/bin/houdini \
 
 # Extra blobs required
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/blobs/bin/houdini:system/bin/houdini \
-	$(LOCAL_PATH)/blobs/bin/disable_houdini:system/bin/disable_houdini \
-	$(LOCAL_PATH)/blobs/bin/enable_houdini:system/bin/enable_houdini \
 	$(LOCAL_PATH)/blobs/bin/kexec:system/bin/kexec \
-	$(LOCAL_PATH)/blobs/lib/libskia.so:system/lib/libskia.so \
 	$(LOCAL_PATH)/blobs/bin/fmradioserver:system/bin/fmradioserver \
 	$(LOCAL_PATH)/blobs/lib/libFMRadio.so:system/lib/libFMRadio.so \
 	$(LOCAL_PATH)/blobs/lib/libfmradio_jni.so:system/lib/libfmradio_jni.so \
 	$(LOCAL_PATH)/blobs/lib/libfmradioplayer.so:system/lib/libfmradioplayer.so \
+
+# Houdini related files
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/blobs/bin/houdini:system/bin/houdini \
+	$(LOCAL_PATH)/blobs/lib/libhoudini.so:system/lib/libhoudini.so \
+	$(LOCAL_PATH)/blobs/bin/disable_houdini:system/bin/disable_houdini \
+	$(LOCAL_PATH)/blobs/bin/enable_houdini:system/bin/enable_houdini \
+	$(LOCAL_PATH)/blobs/lib/arm/check.xml:system/lib/arm/check.xml \
+	$(LOCAL_PATH)/blobs/lib/arm/cpuinfo:system/lib/arm/cpuinfo \
+	$(LOCAL_PATH)/blobs/lib/arm/cpuinfo.neon:system/lib/arm/cpuinfo.neon \
+	$(LOCAL_PATH)/blobs/lib/arm/linker:system/lib/arm/linker \
 
 PRODUCT_COPY_FILES += \
 	#$(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
