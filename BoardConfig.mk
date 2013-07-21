@@ -26,17 +26,14 @@ TARGET_BOOTLOADER_BOARD_NAME := smi
 TARGET_BOARD_PLATFORM := atom
 TARGET_ARCH := x86
 TARGET_ARCH_VARIANT := x86-atom
-TARGET_ARCH_VARIANT := x86
-TARGET_ARCH_VARIANT_FPU := 387
 TARGET_CPU_ABI := x86
 TARGET_CPU_SMP := true
 
 # Atom optimizations specified
 TARGET_GLOBAL_CFLAGS += \
                         -O2 \
-                        -pipe \
                         -flto \
-                        -march=atom \
+#                        -march=atom \
                         -mmmx \
                         -msse \
                         -msse2 \
@@ -64,44 +61,30 @@ TARGET_GLOBAL_CFLAGS += \
                         -ftree-loop-distribution \
                         -foptimize-register-move \
                         -fgraphite-identity \
-                        --param l1-cache-line-size=64 \
-                        --param l1-cache-size=24 \
-                        --param l2-cache-size=512 \
 
-# The following are very specific to out z2480 Atom
+# The following are very specific to our z2480 Atom
 TARGET_GLOBAL_CFLAGS += \
                         --param l1-cache-line-size=64 \
                         --param l1-cache-size=24 \
                         --param l2-cache-size=512 \
 
-#TARGET_GLOBAL_CFLAGS += -DUSE_SSSE3 -DUSE_SSE2
+TARGET_GLOBAL_CFLAGS += -DUSE_SSSE3 -DUSE_SSE2
 
-#TARGET_GLOBAL_CPPFLAGS += $(TARGET_GLOBAL_CFLAGS) -fno-exceptions -fno-rtti
+TARGET_GLOBAL_CPPFLAGS += ""
 
-#LDFLAGS += -Wl,-O1
+TARGET_GLOBAL_LDFLAGS += -Wl,-O1
 
 # Make settings
+TARGET_NO_KERNEL := true
 TARGET_NO_BOOTLOADER := true
+TARGET_NO_RECOVERY := true
 TARGET_NO_RADIOIMAGE := true
 TARGET_NO_RECOVERYIMAGE := true
-TARGET_NO_RECOVERY := true
 TARGET_NO_BOOTIMAGE := true
 
 BOARD_BOOTIMAGE_PARTITION_SIZE   :=  11534336 # 0x00b00000
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 402653184 # 0x18000000
 BOARD_FLASH_BLOCK_SIZE := 2048
-
-# Kernel build
-BOARD_KERNEL_BASE := 0x1200000
-BOARD_KERNEL_BASE := 0x000400
-BOARD_KERNEL_PAGESIZE := 4096
-TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
-TARGET_KERNEL_SOURCE := $(LOCAL_PATH)/kernel/linux-3.0
-TARGET_KERNEL_CONFIG := i386_mfld_oxavelar_defconfig
-#BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/tools/mkbootimg
-BOARD_KERNEL_CMDLINE := init=/init pci=noearly console=logk0 vmalloc=272M \
-earlyprintk=nologger hsu_dma=7 kmemleak=off androidboot.bootmedia=sdcard \
-androidboot.hardware=sc1 emmc_ipanic.ipanic_part_number=6
 
 # Recovery configuration
 #TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
@@ -123,3 +106,6 @@ BOARD_MALLOC_ALIGNMENT := 16
 USE_OPENGL_RENDERER := true
 BOARD_EGL_CFG := $(LOCAL_PATH)/prebuilt/egl.cfg
 
+# Some framework code requires this to enable BT
+BOARD_HAVE_BLUETOOTH := true
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/generic/common/bluetooth
