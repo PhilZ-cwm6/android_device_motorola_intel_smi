@@ -28,6 +28,8 @@ DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay
 # gralloc & mesa lib
 PRODUCT_PACKAGES += \
 	gralloc.$(TARGET_PRODUCT) \
+	audio.primary.$(TARGET_PRODUCT) \
+	sensors.$(TARGET_PRODUCT) \
 
 # Prebuilt configuration files
 PRODUCT_COPY_FILES += \
@@ -42,16 +44,10 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilt/etc/thermal_sensor_config.xml:system/etc/thermal_sensor_config.xml \
 	$(LOCAL_PATH)/prebuilt/etc/thermal_throttle_config.xml:system/etc/thermal_throttle_config.xml \
 
-# Files needed for compilation time
-PRODUCT_COPY_FILES += \
-
-# Extra blobs required
+# Binary blobs required
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/blobs/bin/kexec:system/bin/kexec \
 	$(LOCAL_PATH)/blobs/bin/fmradioserver:system/bin/fmradioserver \
-	$(LOCAL_PATH)/blobs/lib/libFMRadio.so:system/lib/libFMRadio.so \
-	$(LOCAL_PATH)/blobs/lib/libfmradio_jni.so:system/lib/libfmradio_jni.so \
-	$(LOCAL_PATH)/blobs/lib/libfmradioplayer.so:system/lib/libfmradioplayer.so \
 
 # Houdini related files
 PRODUCT_COPY_FILES += \
@@ -59,10 +55,20 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/blobs/lib/libhoudini.so:system/lib/libhoudini.so \
 	$(LOCAL_PATH)/blobs/bin/disable_houdini:system/bin/disable_houdini \
 	$(LOCAL_PATH)/blobs/bin/enable_houdini:system/bin/enable_houdini \
-	$(LOCAL_PATH)/blobs/lib/arm/check.xml:system/lib/arm/check.xml \
-	$(LOCAL_PATH)/blobs/lib/arm/cpuinfo:system/lib/arm/cpuinfo \
-	$(LOCAL_PATH)/blobs/lib/arm/cpuinfo.neon:system/lib/arm/cpuinfo.neon \
 	$(LOCAL_PATH)/blobs/lib/arm/linker:system/lib/arm/linker \
+	$(LOCAL_PATH)/prebuilt/lib/arm/check.xml:system/lib/arm/check.xml \
+	$(LOCAL_PATH)/prebuilt/lib/arm/cpuinfo:system/lib/arm/cpuinfo \
+	$(LOCAL_PATH)/prebuilt/lib/arm/cpuinfo.neon:system/lib/arm/cpuinfo.neon \
+
+BIN_FILES := $(wildcard $(LOCAL_PATH)/blobs/bin/*)
+LIB_NATIVE_FILES := $(wildcard $(LOCAL_PATH)/blobs/lib/*.so)
+LIB_HOUDINI_FILES := $(wildcard $(LOCAL_PATH)/blobs/lib/arm/*.so)
+
+# Copying grouped files
+PRODUCT_COPY_FILES += \
+	$(foreach Item, $(LIB_NATIVE_FILES), $(Item):system/lib/$(notdir $(Item))) \
+	$(foreach Item, $(LIB_HOUDINI_FILES), $(Item):system/lib/arm/$(notdir $(Item))) \
+	$(foreach Item, $(BIN_FILES), $(Item):system/lib/$(notdir $(Item))) \
 
 PRODUCT_COPY_FILES += \
 	#$(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \

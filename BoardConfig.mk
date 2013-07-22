@@ -33,7 +33,7 @@ TARGET_CPU_SMP := true
 TARGET_GLOBAL_CFLAGS += \
                         -O2 \
                         -flto \
-#                        -march=atom \
+                        -march=atom \
                         -mmmx \
                         -msse \
                         -msse2 \
@@ -70,7 +70,7 @@ TARGET_GLOBAL_CFLAGS += \
 
 TARGET_GLOBAL_CFLAGS += -DUSE_SSSE3 -DUSE_SSE2
 
-TARGET_GLOBAL_CPPFLAGS += ""
+TARGET_GLOBAL_CPPFLAGS += -march=atom -mfpmath=sse
 
 TARGET_GLOBAL_LDFLAGS += -Wl,-O1
 
