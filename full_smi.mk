@@ -60,15 +60,15 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilt/lib/arm/cpuinfo:system/lib/arm/cpuinfo \
 	$(LOCAL_PATH)/prebuilt/lib/arm/cpuinfo.neon:system/lib/arm/cpuinfo.neon \
 
-BIN_FILES := $(wildcard $(LOCAL_PATH)/blobs/bin/*)
-LIB_NATIVE_FILES := $(wildcard $(LOCAL_PATH)/blobs/lib/*.so)
-LIB_HOUDINI_FILES := $(wildcard $(LOCAL_PATH)/blobs/lib/arm/*.so)
+BIN_X86_FILES := $(wildcard $(LOCAL_PATH)/blobs/bin/*)
+LIB_X86_FILES := $(wildcard $(LOCAL_PATH)/blobs/lib/*.so)
+LIB_ARM_FILES := $(wildcard $(LOCAL_PATH)/blobs/lib/arm/*.so)
 
 # Copying grouped files
 PRODUCT_COPY_FILES += \
-	$(foreach Item, $(LIB_NATIVE_FILES), $(Item):system/lib/$(notdir $(Item))) \
-	$(foreach Item, $(LIB_HOUDINI_FILES), $(Item):system/lib/arm/$(notdir $(Item))) \
-	$(foreach Item, $(BIN_FILES), $(Item):system/lib/$(notdir $(Item))) \
+	$(foreach Item, $(BIN_X86_FILES), $(Item):system/bin/$(notdir $(Item))) \
+	$(foreach Item, $(LIB_X86_FILES), $(Item):system/lib/$(notdir $(Item))) \
+	$(foreach Item, $(LIB_ARM_FILES), $(Item):system/lib/arm/$(notdir $(Item))) \
 
 PRODUCT_COPY_FILES += \
 	#$(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
