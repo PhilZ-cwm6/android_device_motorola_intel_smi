@@ -45,30 +45,23 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilt/etc/thermal_throttle_config.xml:system/etc/thermal_throttle_config.xml \
 
 # Binary blobs required
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/blobs/bin/kexec:system/bin/kexec \
-	$(LOCAL_PATH)/blobs/bin/fmradioserver:system/bin/fmradioserver \
-
-# Houdini related files
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/blobs/bin/houdini:system/bin/houdini \
-	$(LOCAL_PATH)/blobs/lib/libhoudini.so:system/lib/libhoudini.so \
-	$(LOCAL_PATH)/blobs/bin/disable_houdini:system/bin/disable_houdini \
-	$(LOCAL_PATH)/blobs/bin/enable_houdini:system/bin/enable_houdini \
-	$(LOCAL_PATH)/blobs/lib/arm/linker:system/lib/arm/linker \
-	$(LOCAL_PATH)/prebuilt/lib/arm/check.xml:system/lib/arm/check.xml \
-	$(LOCAL_PATH)/prebuilt/lib/arm/cpuinfo:system/lib/arm/cpuinfo \
-	$(LOCAL_PATH)/prebuilt/lib/arm/cpuinfo.neon:system/lib/arm/cpuinfo.neon \
-
 BIN_X86_FILES := $(wildcard $(LOCAL_PATH)/blobs/bin/*)
 LIB_X86_FILES := $(wildcard $(LOCAL_PATH)/blobs/lib/*.so)
 LIB_ARM_FILES := $(wildcard $(LOCAL_PATH)/blobs/lib/arm/*.so)
+LIB_HW_FILES := $(wildcard $(LOCAL_PATH)/blobs/lib/hw/*.so)
 
 # Copying grouped files
 PRODUCT_COPY_FILES += \
 	$(foreach Item, $(BIN_X86_FILES), $(Item):system/bin/$(notdir $(Item))) \
 	$(foreach Item, $(LIB_X86_FILES), $(Item):system/lib/$(notdir $(Item))) \
 	$(foreach Item, $(LIB_ARM_FILES), $(Item):system/lib/arm/$(notdir $(Item))) \
+	$(foreach Item, $(LIB_HW_FILES), $(Item):system/lib/hw/$(notdir $(Item))) \
+
+# Houdini related files
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/prebuilt/lib/arm/check.xml:system/lib/arm/check.xml \
+	$(LOCAL_PATH)/prebuilt/lib/arm/cpuinfo:system/lib/arm/cpuinfo \
+	$(LOCAL_PATH)/prebuilt/lib/arm/cpuinfo.neon:system/lib/arm/cpuinfo.neon \
 
 PRODUCT_COPY_FILES += \
 	#$(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
