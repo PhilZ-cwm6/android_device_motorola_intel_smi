@@ -30,7 +30,9 @@ TARGET_CPU_ABI := x86
 TARGET_CPU_SMP := true
 
 # Atom optimizations specified
-TARGET_GLOBAL_CFLAGS += \
+TARGET_GLOBAL_CFLAGS += -O2
+
+xTARGET_GLOBAL_CFLAGS += \
                         -O2 \
                         -flto \
                         -march=atom \
