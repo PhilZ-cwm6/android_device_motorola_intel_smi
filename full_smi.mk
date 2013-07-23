@@ -38,6 +38,7 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilt/etc/sysctl.conf:system/etc/sysctl.conf \
 	$(LOCAL_PATH)/prebuilt/etc/powervr.ini:system/etc/powervr.ini \
 	$(LOCAL_PATH)/prebuilt/etc/gps.conf:system/etc/gps.conf \
+	$(LOCAL_PATH)/prebuilt/etc/location.cfg:system/etc/location.cfg \
 	$(LOCAL_PATH)/prebuilt/etc/powervr.ini:system/etc/powervr.ini \
 	$(LOCAL_PATH)/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml \
 	$(LOCAL_PATH)/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
@@ -48,14 +49,16 @@ PRODUCT_COPY_FILES += \
 BIN_X86_FILES := $(wildcard $(LOCAL_PATH)/blobs/bin/*)
 LIB_X86_FILES := $(wildcard $(LOCAL_PATH)/blobs/lib/*.so)
 LIB_ARM_FILES := $(wildcard $(LOCAL_PATH)/blobs/lib/arm/*.so)
-LIB_HW_FILES := $(wildcard $(LOCAL_PATH)/blobs/lib/hw/*.so)
+LIB_XHW_FILES := $(wildcard $(LOCAL_PATH)/blobs/lib/hw/*.so)
+XBN_X86_FILES := $(wildcard $(LOCAL_PATH)/blobs/xbin/*)
 
 # Copying grouped files
 PRODUCT_COPY_FILES += \
-	$(foreach Item, $(BIN_X86_FILES), $(Item):system/bin/$(notdir $(Item))) \
-	$(foreach Item, $(LIB_X86_FILES), $(Item):system/lib/$(notdir $(Item))) \
-	$(foreach Item, $(LIB_ARM_FILES), $(Item):system/lib/arm/$(notdir $(Item))) \
-	$(foreach Item, $(LIB_HW_FILES), $(Item):system/lib/hw/$(notdir $(Item))) \
+	$(foreach i, $(BIN_X86_FILES), $(i):system/bin/$(notdir $(i))) \
+	$(foreach i, $(LIB_X86_FILES), $(i):system/lib/$(notdir $(i))) \
+	$(foreach i, $(LIB_ARM_FILES), $(i):system/lib/arm/$(notdir $(i))) \
+	$(foreach i, $(LIB_XHW_FILES), $(i):system/lib/hw/$(notdir $(i))) \
+	$(foreach i, $(XBN_X86_FILES), $(i):system/lib/xbin/$(notdir $(i))) \
 
 # Houdini related files
 PRODUCT_COPY_FILES += \
