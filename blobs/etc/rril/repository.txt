@@ -118,8 +118,8 @@ Group Modem
 //
 //  Command will be sent upon device init.
 //  If values are missing, then default modem values are used (default value is 0)
-    FDDelayTimer                2
-    SCRITimer                   30
+    FDDelayTimer                7
+    SCRITimer                   21
 
 // Fast Dormancy mode - Set Modem Autonomous Fast Dormancy (MAFD) mode
 //      If set to "1", "OEM Managed": MAFD is off by default;  It can be
@@ -129,7 +129,7 @@ Group Modem
 //      If set to "3", "Always on": MAFD is enabled at boot time and remains on
 //          during device power cycle.
 //      If value is missing, default mode is "2": "Display Driven".
-    FDMode                     2
+    FDMode                     1
 
 // Temporary Out of Service (OoS) Notifications - Enable/disable support for
 //      Temporary OoS notications.

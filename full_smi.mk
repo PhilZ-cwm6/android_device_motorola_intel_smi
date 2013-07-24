@@ -35,6 +35,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
 	$(LOCAL_PATH)/prebuilt/etc/asound.conf:system/etc/asound.conf \
+	$(LOCAL_PATH)/prebuilt/etc/asound_p1.conf:system/etc/asound_p1.conf \
+	$(LOCAL_PATH)/prebuilt/etc/asound_p1.conf:system/etc/asound_p3.conf \
 	$(LOCAL_PATH)/prebuilt/etc/sysctl.conf:system/etc/sysctl.conf \
 	$(LOCAL_PATH)/prebuilt/etc/powervr.ini:system/etc/powervr.ini \
 	$(LOCAL_PATH)/prebuilt/etc/gps.conf:system/etc/gps.conf \
@@ -44,25 +46,26 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
 	$(LOCAL_PATH)/prebuilt/etc/thermal_sensor_config.xml:system/etc/thermal_sensor_config.xml \
 	$(LOCAL_PATH)/prebuilt/etc/thermal_throttle_config.xml:system/etc/thermal_throttle_config.xml \
+	$(LOCAL_PATH)/prebuilt/etc/wrs_omxil_components.list:system/etc/wrs_omxil_components.list \
 
 # Binary blobs required
 BIN_X86_FILES := $(wildcard $(LOCAL_PATH)/blobs/bin/*)
+XBN_X86_FILES := $(wildcard $(LOCAL_PATH)/blobs/xbin/*)
 LIB_X86_FILES := $(wildcard $(LOCAL_PATH)/blobs/lib/*.so)
 LIB_ARM_FILES := $(wildcard $(LOCAL_PATH)/blobs/lib/arm/*.so)
 LIB_XHW_FILES := $(wildcard $(LOCAL_PATH)/blobs/lib/hw/*.so)
-XBN_X86_FILES := $(wildcard $(LOCAL_PATH)/blobs/xbin/*)
 
 # Copying grouped files
 PRODUCT_COPY_FILES += \
 	$(foreach i, $(BIN_X86_FILES), $(i):system/bin/$(notdir $(i))) \
+	$(foreach i, $(XBN_X86_FILES), $(i):system/xbin/$(notdir $(i))) \
 	$(foreach i, $(LIB_X86_FILES), $(i):system/lib/$(notdir $(i))) \
 	$(foreach i, $(LIB_ARM_FILES), $(i):system/lib/arm/$(notdir $(i))) \
 	$(foreach i, $(LIB_XHW_FILES), $(i):system/lib/hw/$(notdir $(i))) \
-	$(foreach i, $(XBN_X86_FILES), $(i):system/lib/xbin/$(notdir $(i))) \
 
 # Houdini related files
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/prebuilt/lib/arm/check.xml:system/lib/arm/check.xml \
+	#$(LOCAL_PATH)/prebuilt/lib/arm/check.xml:system/lib/arm/check.xml \
 	$(LOCAL_PATH)/prebuilt/lib/arm/cpuinfo:system/lib/arm/cpuinfo \
 	$(LOCAL_PATH)/prebuilt/lib/arm/cpuinfo.neon:system/lib/arm/cpuinfo.neon \
 

@@ -30,9 +30,7 @@ TARGET_CPU_ABI := x86
 TARGET_CPU_SMP := true
 
 # Atom optimizations specified
-TARGET_GLOBAL_CFLAGS += -O2
-
-xTARGET_GLOBAL_CFLAGS += \
+TARGET_GLOBAL_CFLAGS += \
                         -O2 \
                         -flto \
                         -march=atom \
@@ -85,7 +83,7 @@ TARGET_NO_RECOVERYIMAGE := true
 TARGET_NO_BOOTIMAGE := true
 
 BOARD_BOOTIMAGE_PARTITION_SIZE   :=  11534336 # 0x00b00000
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 402653184 # 0x18000000
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 536870912 # 0x20000000
 BOARD_FLASH_BLOCK_SIZE := 2048
 
 # Recovery configuration
