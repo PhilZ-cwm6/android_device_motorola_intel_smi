@@ -31,6 +31,48 @@ PRODUCT_PACKAGES += \
 	audio.primary.$(TARGET_PRODUCT) \
 	sensors.$(TARGET_PRODUCT) \
 
+# Binary blobs required
+BIN_X86_FILES := $(wildcard $(LOCAL_PATH)/blobs/bin/*)
+XBN_X86_FILES := $(wildcard $(LOCAL_PATH)/blobs/xbin/*)
+LIB_X86_FILES := $(wildcard $(LOCAL_PATH)/blobs/lib/*.so)
+LIB_ARM_FILES := $(wildcard $(LOCAL_PATH)/blobs/lib/arm/*.so)
+LIB_XHW_FILES := $(wildcard $(LOCAL_PATH)/blobs/lib/hw/*.so)
+# Vendor located blobs here
+LIB_VND_FILES := $(wildcard $(LOCAL_PATH)/blobs/vendor/lib/*.so)
+LIB_DRM_FILES := $(wildcard $(LOCAL_PATH)/blobs/vendor/lib/drm/*.so)
+LIB_EGL_FILES := $(wildcard $(LOCAL_PATH)/blobs/vendor/lib/egl/*.so)
+LIB_VHW_FILES := $(wildcard $(LOCAL_PATH)/blobs/vendor/lib/hw/*.so)
+
+# Copying grouped files
+PRODUCT_COPY_FILES += \
+	$(foreach i, $(BIN_X86_FILES), $(i):system/bin/$(notdir $(i))) \
+	$(foreach i, $(XBN_X86_FILES), $(i):system/xbin/$(notdir $(i))) \
+	$(foreach i, $(LIB_X86_FILES), $(i):system/lib/$(notdir $(i))) \
+	$(foreach i, $(LIB_ARM_FILES), $(i):system/lib/arm/$(notdir $(i))) \
+	$(foreach i, $(LIB_XHW_FILES), $(i):system/lib/hw/$(notdir $(i))) \
+	\
+	$(foreach i, $(LIB_VND_FILES), $(i):system/vendor/lib/$(notdir $(i))) \
+	$(foreach i, $(LIB_DRM_FILES), $(i):system/vendor/lib/drm/$(notdir $(i))) \
+	$(foreach i, $(LIB_EGL_FILES), $(i):system/vendor/lib/egl/$(notdir $(i))) \
+	$(foreach i, $(LIB_VHW_FILES), $(i):system/vendor/lib/hw/$(notdir $(i))) \
+
+# Houdini related files
+PRODUCT_COPY_FILES += \
+	#$(LOCAL_PATH)/prebuilt/lib/arm/check.xml:system/lib/arm/check.xml \
+	$(LOCAL_PATH)/prebuilt/lib/arm/cpuinfo:system/lib/arm/cpuinfo \
+	$(LOCAL_PATH)/prebuilt/lib/arm/cpuinfo.neon:system/lib/arm/cpuinfo.neon \
+
+# Extra ALSA files
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/blobs/usr/lib/alsa-lib/libasound_module_ctl_voice.so:system/usr/lib/alsa-lib/libasound_module_ctl_voice.so \
+	$(LOCAL_PATH)/blobs/usr/lib/alsa-lib/libasound_module_pcm_voice.so:system/usr/lib/alsa-lib/libasound_module_pcm_voice.so \
+	$(LOCAL_PATH)/prebuilt/vendor/etc/audio_policy.conf:system/vendor/etc/audio_policy.conf \
+
+# NFC blobs
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/blobs/vendor/firmware/libnfcpn544c3_fw.so:system/vendor/firmware/libnfcpn544c3_fw.so \
+	$(LOCAL_PATH)/blobs/vendor/firmware/libpn544_fw.so:system/vendor/firmware/libpn544_fw.so \
+
 # Prebuilt configuration files
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
@@ -47,27 +89,6 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilt/etc/thermal_sensor_config.xml:system/etc/thermal_sensor_config.xml \
 	$(LOCAL_PATH)/prebuilt/etc/thermal_throttle_config.xml:system/etc/thermal_throttle_config.xml \
 	$(LOCAL_PATH)/prebuilt/etc/wrs_omxil_components.list:system/etc/wrs_omxil_components.list \
-
-# Binary blobs required
-BIN_X86_FILES := $(wildcard $(LOCAL_PATH)/blobs/bin/*)
-XBN_X86_FILES := $(wildcard $(LOCAL_PATH)/blobs/xbin/*)
-LIB_X86_FILES := $(wildcard $(LOCAL_PATH)/blobs/lib/*.so)
-LIB_ARM_FILES := $(wildcard $(LOCAL_PATH)/blobs/lib/arm/*.so)
-LIB_XHW_FILES := $(wildcard $(LOCAL_PATH)/blobs/lib/hw/*.so)
-
-# Copying grouped files
-PRODUCT_COPY_FILES += \
-	$(foreach i, $(BIN_X86_FILES), $(i):system/bin/$(notdir $(i))) \
-	$(foreach i, $(XBN_X86_FILES), $(i):system/xbin/$(notdir $(i))) \
-	$(foreach i, $(LIB_X86_FILES), $(i):system/lib/$(notdir $(i))) \
-	$(foreach i, $(LIB_ARM_FILES), $(i):system/lib/arm/$(notdir $(i))) \
-	$(foreach i, $(LIB_XHW_FILES), $(i):system/lib/hw/$(notdir $(i))) \
-
-# Houdini related files
-PRODUCT_COPY_FILES += \
-	#$(LOCAL_PATH)/prebuilt/lib/arm/check.xml:system/lib/arm/check.xml \
-	$(LOCAL_PATH)/prebuilt/lib/arm/cpuinfo:system/lib/arm/cpuinfo \
-	$(LOCAL_PATH)/prebuilt/lib/arm/cpuinfo.neon:system/lib/arm/cpuinfo.neon \
 
 PRODUCT_COPY_FILES += \
 	#$(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
