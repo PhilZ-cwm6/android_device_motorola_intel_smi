@@ -62,6 +62,10 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilt/lib/arm/cpuinfo:system/lib/arm/cpuinfo \
 	$(LOCAL_PATH)/prebuilt/lib/arm/cpuinfo.neon:system/lib/arm/cpuinfo.neon \
 
+# PVR blobs
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/blobs/vendor/bin/pvrsrvctl:system/vendor/bin/pvrsrvctl
+
 # Extra ALSA files
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/blobs/usr/lib/alsa-lib/libasound_module_ctl_voice.so:system/usr/lib/alsa-lib/libasound_module_ctl_voice.so \
@@ -93,7 +97,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	#$(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
 	#$(LOCAL_PATH)/blobs/watchdogd:recovery/root/sbin/watchdogd \
-	#?$(LOCAL_PATH)/blobs/atmxt-r2.tdat:recovery/root/vendor/firmware/atmxt-r2.tdat \
+	#$(LOCAL_PATH)/blobs/atmxt-r2.tdat:recovery/root/vendor/firmware/atmxt-r2.tdat \
 
 # Inherit dalvik configuration and the rest of the platform
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
