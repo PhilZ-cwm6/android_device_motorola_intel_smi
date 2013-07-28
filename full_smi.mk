@@ -95,6 +95,7 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilt/etc/wrs_omxil_components.list:system/etc/wrs_omxil_components.list \
 
 PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/prebuilt/media/bootanimation.zip:system/media/bootanimation.zip \
 	#$(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
 	#$(LOCAL_PATH)/blobs/watchdogd:recovery/root/sbin/watchdogd \
 	#$(LOCAL_PATH)/blobs/atmxt-r2.tdat:recovery/root/vendor/firmware/atmxt-r2.tdat \
