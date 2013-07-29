@@ -81,8 +81,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
 	$(LOCAL_PATH)/prebuilt/etc/asound.conf:system/etc/asound.conf \
-	$(LOCAL_PATH)/prebuilt/etc/asound_p1.conf:system/etc/asound_p1.conf \
-	$(LOCAL_PATH)/prebuilt/etc/asound_p1.conf:system/etc/asound_p3.conf \
 	$(LOCAL_PATH)/prebuilt/etc/sysctl.conf:system/etc/sysctl.conf \
 	$(LOCAL_PATH)/prebuilt/etc/powervr.ini:system/etc/powervr.ini \
 	$(LOCAL_PATH)/prebuilt/etc/gps.conf:system/etc/gps.conf \
