@@ -19,5 +19,7 @@
 <resources>
     <!-- Boolean to specify whether or not NFC should be default
          enabled -->
+    <!-- Omar, commenting this, it is failing...
     <bool name="nfc_on_default">false</bool>
+    -->
 </resources>
