@@ -8,7 +8,7 @@ repo sync -j8
 Now overlay this device tree onto the repository. Do a source of the build files, do lunch and select the following for now:
 
 ```
-full_smi-userdebug
+smi-userdebug
 ```
 
 After that, now issue the following command (I am using 10 jobs on my PC).

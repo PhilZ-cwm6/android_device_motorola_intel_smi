@@ -104,7 +104,7 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 $(call inherit-product, build/target/product/full_base_telephony.mk)
 
-PRODUCT_NAME := full_smi
+PRODUCT_NAME := smi
 PRODUCT_DEVICE := smi
 PRODUCT_BRAND := Motorola
 PRODUCT_MANUFACTURER := Motorola
