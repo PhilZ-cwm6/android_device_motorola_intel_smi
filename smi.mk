@@ -85,7 +85,7 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilt/etc/parameter-framework/Structure/Vibrator/AlsaVibratorClass.xml:system/etc/parameter-framework/Structure/Vibrator/AlsaVibratorClass.xml \
 	$(LOCAL_PATH)/prebuilt/etc/parameter-framework/Structure/Vibrator/AlsaVibratorSubsystem.xml:system/etc/parameter-framework/Structure/Vibrator/AlsaVibratorSubsystem.xml \
 	$(LOCAL_PATH)/prebuilt/usr/share/alsa/alsa.conf:system/usr/share/alsa/alsa.conf \
-	$(LOCAL_PATH)/prebuilt/usr/share/alsa/cards/aliases.conf:system/usr/share/cards/aliases.conf \
+	$(LOCAL_PATH)/prebuilt/usr/share/alsa/cards/aliases.conf:system/usr/share/alsa/cards/aliases.conf \
 	#$(LOCAL_PATH)/prebuilt/usr/share/alsa/pcm/*:system/usr/share/alsa/pcm/* \
 
 # NFC blobs
