@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SystemClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Schemas/,DanaInfo=jfrailbz01.jfrail.intel.com,Port=41017,SSO=P+SystemClass.xsd" Name="Audio">
+	<SubsystemInclude Path="LPESubsystem.xml"></SubsystemInclude>
+	<SubsystemInclude Path="MSICSubsystem.xml"></SubsystemInclude>
+	<!--SubsystemInclude Path="IMCSubsystem.xml"/-->
+	<!--Subsystem Name="Audience" Type="Audience" Endianness="Little">
+		<ComponentLibrary>
+			<ComponentType Name="AGC">
+				<BooleanParameter Name="ENABLE"/>
+			</ComponentType>
+			<ComponentType Name="VOICE_PROCESSING">
+				<BooleanParameter Name="ENABLE"/>
+				<Component Name="AGC_DL" Type="AGC"/>
+			</ComponentType>
+		</ComponentLibrary>
+		<InstanceDefinition>
+			<Component Name="VOICE_PROCESSING" Type="VOICE_PROCESSING"/>
+		</InstanceDefinition>
+	</Subsystem-->
+</SystemClass>
