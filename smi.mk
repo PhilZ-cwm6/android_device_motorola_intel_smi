@@ -93,6 +93,10 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/blobs/vendor/firmware/libnfcpn544c3_fw.so:system/vendor/firmware/libnfcpn544c3_fw.so \
 	$(LOCAL_PATH)/blobs/vendor/firmware/libpn544_fw.so:system/vendor/firmware/libpn544_fw.so \
 
+# Wireless related stuff
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/blobs/etc/firmware/ti-connectivity/wl1271-nvs.bin:system/etc/firmware/ti-connectivity/wl1271-nvs.bin
+
 # Prebuilt configuration files
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
