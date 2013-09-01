@@ -68,9 +68,25 @@ PRODUCT_COPY_FILES += \
 
 # Extra ALSA files
 PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/prebuilt/etc/asound.conf:system/etc/asound.conf \
+	$(LOCAL_PATH)/prebuilt/etc/asound_p1.conf:system/etc/asound_p1.conf \
+	$(LOCAL_PATH)/prebuilt/etc/asound_p3.conf:system/etc/asound_p3.conf \
 	$(LOCAL_PATH)/blobs/usr/lib/alsa-lib/libasound_module_ctl_voice.so:system/usr/lib/alsa-lib/libasound_module_ctl_voice.so \
 	$(LOCAL_PATH)/blobs/usr/lib/alsa-lib/libasound_module_pcm_voice.so:system/usr/lib/alsa-lib/libasound_module_pcm_voice.so \
 	$(LOCAL_PATH)/prebuilt/vendor/etc/audio_policy.conf:system/vendor/etc/audio_policy.conf \
+	$(LOCAL_PATH)/prebuilt/etc/parameter-framework/Settings/Audio/AudioConfigurableDomains.xml:system/etc/parameter-framework/Settings/Audio/AudioConfigurableDomains.xml \
+	$(LOCAL_PATH)/prebuilt/etc/parameter-framework/Settings/Vibrator/VibratorConfigurableDomains.xml:system/etc/parameter-framework/Settings/Vibrator/VibratorConfigurableDomains.xml \
+	$(LOCAL_PATH)/prebuilt/etc/parameter-framework/ParameterFrameworkConfiguration.xml:system/etc/parameter-framework/ParameterFrameworkConfiguration.xml \
+	$(LOCAL_PATH)/prebuilt/etc/parameter-framework/ParameterFrameworkConfigurationVibrator.xml:system/etc/parameter-framework/ParameterFrameworkConfigurationVibrator.xml \
+	$(LOCAL_PATH)/prebuilt/etc/parameter-framework/Structure/Audio/AudioClass.xml:system/etc/parameter-framework/Structure/Audio/AudioClass.xml \
+	$(LOCAL_PATH)/prebuilt/etc/parameter-framework/Structure/Audio/IMCSubsystem.xml:system/etc/parameter-framework/Structure/Audio/IMCSubsystem.xml \
+	$(LOCAL_PATH)/prebuilt/etc/parameter-framework/Structure/Audio/LPESubsystem.xml:system/etc/parameter-framework/Structure/Audio/LPESubsystem.xml \
+	$(LOCAL_PATH)/prebuilt/etc/parameter-framework/Structure/Audio/MSICSubsystem.xml:system/etc/parameter-framework/Structure/Audio/MSICSubsystem.xml \
+	$(LOCAL_PATH)/prebuilt/etc/parameter-framework/Structure/Vibrator/AlsaVibratorClass.xml:system/etc/parameter-framework/Structure/Vibrator/AlsaVibratorClass.xml \
+	$(LOCAL_PATH)/prebuilt/etc/parameter-framework/Structure/Vibrator/AlsaVibratorSubsystem.xml:system/etc/parameter-framework/Structure/Vibrator/AlsaVibratorSubsystem.xml \
+	$(LOCAL_PATH)/prebuilt/usr/share/alsa/alsa.conf:system/usr/share/alsa/alsa.conf \
+	$(LOCAL_PATH)/prebuilt/usr/share/alsa/cards/aliases.conf:system/usr/share/cards/aliases.conf \
+	#$(LOCAL_PATH)/prebuilt/usr/share/alsa/pcm/*:system/usr/share/alsa/pcm/* \
 
 # NFC blobs
 PRODUCT_COPY_FILES += \
@@ -80,9 +96,6 @@ PRODUCT_COPY_FILES += \
 # Prebuilt configuration files
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
-	$(LOCAL_PATH)/prebuilt/etc/asound.conf:system/etc/asound.conf \
-	$(LOCAL_PATH)/prebuilt/etc/asound_p1.conf:system/etc/asound_p1.conf \
-	$(LOCAL_PATH)/prebuilt/etc/asound_p3.conf:system/etc/asound_p3.conf \
 	$(LOCAL_PATH)/prebuilt/etc/sysctl.conf:system/etc/sysctl.conf \
 	$(LOCAL_PATH)/prebuilt/etc/powervr.ini:system/etc/powervr.ini \
 	$(LOCAL_PATH)/prebuilt/etc/gps.conf:system/etc/gps.conf \
@@ -96,9 +109,14 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilt/media/bootanimation.zip:system/media/bootanimation.zip \
-	#$(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
-	#$(LOCAL_PATH)/blobs/watchdogd:recovery/root/sbin/watchdogd \
-	#$(LOCAL_PATH)/blobs/atmxt-r2.tdat:recovery/root/vendor/firmware/atmxt-r2.tdat \
+
+# Recovery related stuff
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/prebuilt/kernel:kernel \
+	$(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
+	$(LOCAL_PATH)/blobs/watchdogd:recovery/root/sbin/watchdogd \
+	$(LOCAL_PATH)/blobs/etc/firmware/atmxt-r1.tdat:recovery/root/vendor/firmware/atmxt-r1.tdat \
+	$(LOCAL_PATH)/blobs/etc/firmware/atmxt-r2.tdat:recovery/root/vendor/firmware/atmxt-r2.tdat \
 
 # Inherit dalvik configuration and the rest of the platform
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)

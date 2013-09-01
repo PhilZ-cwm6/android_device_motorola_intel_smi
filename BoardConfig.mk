@@ -51,6 +51,8 @@ TARGET_GLOBAL_CFLAGS += \
                         -fforce-addr \
                         -ffast-math \
                         -fsingle-precision-constant \
+                        -falign-functions=4 \
+                        -floop-optimize \
                         -floop-block \
                         -floop-interchange \
                         -floop-strip-mine \
@@ -72,8 +74,6 @@ TARGET_GLOBAL_CFLAGS += -DUSE_SSSE3 -DUSE_SSE2
 
 TARGET_GLOBAL_CPPFLAGS += -fno-exceptions
 
-TARGET_GLOBAL_LDFLAGS += -Wl,-O1
-
 # Make settings
 TARGET_NO_KERNEL := true
 TARGET_NO_BOOTIMAGE := true
@@ -89,7 +89,7 @@ BOARD_FLASH_BLOCK_SIZE := 2048
 # Recovery configuration
 BOARD_TOUCH_RECOVERY := true
 BOARD_HAS_NO_SELECT_BUTTON := true
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 DEVICE_BASE_RECOVERY_IMAGE := $(LOCAL_PATH)/prebuilt/recovery.img
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := $(LOCAL_PATH)/recovery/recovery_keys.c
 
