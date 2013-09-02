@@ -89,6 +89,7 @@ PRODUCT_COPY_FILES += \
 	#$(LOCAL_PATH)/prebuilt/usr/share/alsa/pcm/*:system/usr/share/alsa/pcm/* \
 
 # Input digitizers
+PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilt/usr/share/idc/atmxt-i2c.idc:system/usr/share/idc/atmxt-i2c.idc \
 	$(LOCAL_PATH)/prebuilt/usr/share/idc/mxt224_touchscreen_0.idc:system/usr/share/idc/mxt224_touchscreen_0.idc \
 
@@ -99,7 +100,7 @@ PRODUCT_COPY_FILES += \
 
 # Wireless related stuff
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/blobs/etc/firmware/ti-connectivity/wl1271-nvs.bin:system/etc/firmware/ti-connectivity/wl1271-nvs.bin
+	$(LOCAL_PATH)/blobs/etc/firmware/ti-connectivity/wl1271-nvs.bin:system/etc/firmware/ti-connectivity/wl1271-nvs.bin \
 
 # Prebuilt configuration files
 PRODUCT_COPY_FILES += \
