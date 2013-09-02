@@ -90,8 +90,8 @@ PRODUCT_COPY_FILES += \
 
 # Input digitizers
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/prebuilt/usr/share/idc/atmxt-i2c.idc:system/usr/share/idc/atmxt-i2c.idc \
-	$(LOCAL_PATH)/prebuilt/usr/share/idc/mxt224_touchscreen_0.idc:system/usr/share/idc/mxt224_touchscreen_0.idc \
+	$(LOCAL_PATH)/prebuilt/usr/idc/atmxt-i2c.idc:system/usr/idc/atmxt-i2c.idc \
+	$(LOCAL_PATH)/prebuilt/usr/idc/mxt224_touchscreen_0.idc:system/usr/idc/mxt224_touchscreen_0.idc \
 
 # NFC blobs
 PRODUCT_COPY_FILES += \
