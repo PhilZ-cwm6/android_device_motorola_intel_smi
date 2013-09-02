@@ -29,6 +29,10 @@ TARGET_ARCH_VARIANT := x86-atom
 TARGET_CPU_ABI := x86
 TARGET_CPU_SMP := true
 
+# Used throughout build system to turn on/off custom stuff for x86:
+# It is needed, at the very least, to prevent libffi build
+TARGET_ARCH := x86
+
 # Atom optimizations specified
 TARGET_GLOBAL_CFLAGS += \
                         -O2 \
@@ -89,7 +93,7 @@ BOARD_FLASH_BLOCK_SIZE := 2048
 # Recovery configuration
 BOARD_TOUCH_RECOVERY := true
 BOARD_HAS_NO_SELECT_BUTTON := true
-TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
+TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
 DEVICE_BASE_RECOVERY_IMAGE := $(LOCAL_PATH)/prebuilt/recovery.img
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := $(LOCAL_PATH)/recovery/recovery_keys.c
 
@@ -103,8 +107,11 @@ ADDITIONAL_BUILD_PROPERTIES += ro.product.cpu.abi2=armeabi-v7a
 # Customize the malloced address to be 16-byte aligned
 BOARD_MALLOC_ALIGNMENT := 16
 
-# Custom EGL files
-USE_OPENGL_RENDERER := true
+# Custom EGL files, SW rendering for now...
+BOARD_USE_MESA := false
+BOARD_GPU_DRIVERS :=
+USE_OPENGL_RENDERER := false
+#USE_OPENGL_RENDERER := true
 BOARD_EGL_CFG := $(LOCAL_PATH)/prebuilt/egl.cfg
 
 # Some framework code requires this to enable BT

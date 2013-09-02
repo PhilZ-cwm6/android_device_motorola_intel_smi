@@ -88,6 +88,10 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilt/usr/share/alsa/cards/aliases.conf:system/usr/share/alsa/cards/aliases.conf \
 	#$(LOCAL_PATH)/prebuilt/usr/share/alsa/pcm/*:system/usr/share/alsa/pcm/* \
 
+# Input digitizers
+	$(LOCAL_PATH)/prebuilt/usr/share/idc/atmxt-i2c.idc:system/usr/share/idc/atmxt-i2c.idc \
+	$(LOCAL_PATH)/prebuilt/usr/share/idc/mxt224_touchscreen_0.idc:system/usr/share/idc/mxt224_touchscreen_0.idc \
+
 # NFC blobs
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/blobs/vendor/firmware/libnfcpn544c3_fw.so:system/vendor/firmware/libnfcpn544c3_fw.so \
