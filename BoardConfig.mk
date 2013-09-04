@@ -103,6 +103,8 @@ TARGET_USERIMAGES_USE_EXT4 := true
 # Enabling Houdini by default
 INTEL_HOUDINI := true
 ADDITIONAL_BUILD_PROPERTIES += ro.product.cpu.abi2=armeabi-v7a
+ADDITIONAL_BUILD_PROPERTIES += ro.product.cpu.upgradeabi=armeabi-v7a
+ADDITIONAL_BUILD_PROPERTIES += dalvik.vm.houdini=on
 
 # Customize the malloced address to be 16-byte aligned
 BOARD_MALLOC_ALIGNMENT := 16
@@ -117,3 +119,10 @@ BOARD_EGL_CFG := $(LOCAL_PATH)/prebuilt/egl.cfg
 # Some framework code requires this to enable BT
 BOARD_HAVE_BLUETOOTH := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/generic/common/bluetooth
+
+# Kernel Mmap memory bottom-up
+ADDITIONAL_BUILD_PROPERTIES += ro.config.personality=compat_layout
+
+BUILD_WITH_FULL_STAGEFRIGHT := true
+
+
