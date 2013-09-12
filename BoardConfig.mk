@@ -36,7 +36,6 @@ TARGET_ARCH := x86
 # Atom optimizations specified
 TARGET_GLOBAL_CFLAGS += \
                         -O2 \
-                        -flto \
                         -march=atom \
                         -mmmx \
                         -msse \
@@ -53,20 +52,16 @@ TARGET_GLOBAL_CFLAGS += \
                         -fpredictive-commoning \
                         -fgcse-after-reload \
                         -fforce-addr \
-                        -ffast-math \
                         -fsingle-precision-constant \
                         -falign-functions=4 \
-                        -floop-optimize \
-                        -floop-block \
-                        -floop-interchange \
-                        -floop-strip-mine \
                         -floop-parallelize-all \
+                        -floop-block \
                         -ftree-parallelize-loops=2 \
                         -ftree-loop-if-convert \
                         -ftree-loop-if-convert-stores \
-                        -ftree-loop-distribution \
                         -foptimize-register-move \
-                        -fgraphite-identity \
+                        -fmodulo-sched \
+                        -fmodulo-sched-allow-regmoves \
 
 # The following are very specific to our z2480 Atom
 TARGET_GLOBAL_CFLAGS += \
@@ -74,9 +69,9 @@ TARGET_GLOBAL_CFLAGS += \
                         --param l1-cache-size=24 \
                         --param l2-cache-size=512 \
 
-TARGET_GLOBAL_CFLAGS += -DUSE_SSSE3 -DUSE_SSE2
+#TARGET_GLOBAL_CFLAGS += -DUSE_SSSE3 -DUSE_SSE2
 
-TARGET_GLOBAL_CPPFLAGS += -fno-exceptions
+TARGET_GLOBAL_CPPFLAGS += -fno-exceptions -DUSE_SSSE3 -DUSE_SSE2
 
 # Make settings
 TARGET_NO_KERNEL := true
@@ -124,5 +119,4 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/generic/common/bluetooth
 ADDITIONAL_BUILD_PROPERTIES += ro.config.personality=compat_layout
 
 BUILD_WITH_FULL_STAGEFRIGHT := true
-
 
